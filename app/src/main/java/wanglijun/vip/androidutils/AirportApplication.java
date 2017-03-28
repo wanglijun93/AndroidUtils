@@ -14,8 +14,6 @@ import android.os.Handler;
 public class AirportApplication extends Application {
     public static Context context;
     public static Handler mainHandler;
-    public static boolean noNet = false;
-    public static boolean net = false;
 
 
 
