@@ -1,4 +1,4 @@
-package wanglijun.vip.androidutils;
+package wanglijun.vip.androidutils.utils;
 
 /**
  * @author： wlj
