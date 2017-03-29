@@ -6,26 +6,36 @@
 
 ---
 
-##目前本工具类涵盖的有一下内容
-| 类名        | 作用   |
-| --------   | -----:  |
-| Application     | 全局上下文 |
-| APPUtils        |   App 相关信息，包括版本名称、版本号、包名等等   |
-| FileUtil        |    文件工具类    |
-| LogUtils        |    log工具类    |
-| SPUtils        |    SharedPreferences统一管理类    |
-| ToastUtils        |    Toast封装类    |
-| NetWork        |    判断手机网络类型，是否连接    |
-| NetWorkUtils        |    获取网络状态    |
-| JsonUtils        |    json的转换    |
-| AssetsUtils        |    Assets获取的相关操作类    |
-| BASE64Utils        |    bese64的转换    |
-| BitmapUtils        |    bitmap图片的相互转换工具类    |
-| DisplayUtils        |    屏幕相关    |
+## 目前本工具类涵盖的有一下内容
 
+Application   全局上下文
+
+APPUtils   App 相关信息，包括版本名称、版本号、包名等等
+
+FileUtil   文件工具类
+
+LogUtils   log工具类
+
+SPUtils   SharedPreferences统一管理类
+
+ToastUtils   Toast封装类
+
+NetWork   判断手机网络类型，是否连接
+
+NetWorkUtils   获取网络状态
+
+JsonUtils   json的转换
+
+AssetsUtils   Assets获取的相关操作类
+
+BASE64Utils   bese64的转换
+
+BitmapUtils   bitmap图片的相互转换工具类
+
+DisplayUtils   屏幕相关
 
 ---
-##权限 Permission
+## 权限 Permission
 ```
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
