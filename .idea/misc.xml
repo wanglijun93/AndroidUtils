@@ -44,22 +44,17 @@
     <option name="id" value="Android" />
   </component>
   <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$/app">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="http://10.1.2.164/svn/ADMS/1.%E5%BC%80%E5%8F%91%E5%8C%BA/6.%E6%96%87%E6%A1%A3/%E6%B9%96%E5%8D%97%E6%9C%BA%E5%9C%BA%E7%9B%B8%E5%85%B3%E6%96%87%E6%A1%A3/Android2.2.3/AndroidUtils/app" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="mySupportsUserInfoFilter" value="true" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
