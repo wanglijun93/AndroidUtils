@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidUtils.iml" filepath="$PROJECT_DIR$/AndroidUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/AndroidUtils.app.iml" filepath="$PROJECT_DIR$/app/AndroidUtils.app.iml" group="AndroidUtils/app" />
+      <module fileurl="file://$PROJECT_DIR$/GitHubP.AndroidUtils.iml" filepath="$PROJECT_DIR$/GitHubP.AndroidUtils.iml" group="AndroidUtils" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
