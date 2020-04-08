@@ -44,15 +44,15 @@ public class ServiceUtils {
      * @return
      */
     public static boolean stopRunningService(Context context, String className) {
-        Intent intent_service = null;
+        Intent intentService = null;
         boolean ret = false;
         try {
-            intent_service = new Intent(context, Class.forName(className));
+            intentService = new Intent(context, Class.forName(className));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (intent_service != null) {
-            ret = context.stopService(intent_service);
+        if (intentService != null) {
+            ret = context.stopService(intentService);
         }
         return ret;
     }

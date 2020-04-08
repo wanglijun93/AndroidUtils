@@ -2,7 +2,6 @@ package wanglijun.vip.androidutils.utils;
 
 import android.content.Context;
 
-import java.io.Externalizable;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -29,7 +28,7 @@ public class SerializableUtils {
      * @throws IOException
      */
     public static void serializeData(Context context, String fileName, Object obj) throws IOException {
-        if (!(obj instanceof Serializable) && !(obj instanceof Externalizable)) {
+        if (!(obj instanceof Serializable)) {
             throw new InvalidClassException("Object must be serialized!");
         }
         FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE);

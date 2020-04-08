@@ -22,7 +22,8 @@ public class NetWorkUtils {
     public static final String NETWORK_TYPE_WAP = "wap";
     public static final String NETWORK_TYPE_UNKNOWN = "unknown";
     public static final String NETWORK_TYPE_DISCONNECT = "disconnect";
-
+    private static final String WIFI = "WIFI";
+    private static final String MOBILE = "MOBILE";
     /**
      * Get network type
      *
@@ -66,9 +67,9 @@ public class NetWorkUtils {
 
         if (networkInfo.isConnected()) {
             String typeName = networkInfo.getTypeName();
-            if ("WIFI".equalsIgnoreCase(typeName)) {
+            if (WIFI.equalsIgnoreCase(typeName)) {
                 type = NETWORK_TYPE_WIFI;
-            } else if ("MOBILE".equalsIgnoreCase(typeName)) {
+            } else if (MOBILE.equalsIgnoreCase(typeName)) {
                 String proxyHost = android.net.Proxy.getDefaultHost();
                 type = TextUtils.isEmpty(proxyHost) ? (isFastMobileNetwork(context) ? NETWORK_TYPE_3G : NETWORK_TYPE_2G)
                         : NETWORK_TYPE_WAP;

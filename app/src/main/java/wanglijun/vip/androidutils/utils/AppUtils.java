@@ -202,18 +202,18 @@ public class AppUtils {
     }
 
     /**
-     * Judge whether an app is dubuggable by package name
+     * Judge whether an app is debugAble by package name
      *
      * @param context
      * @param packageName
      * @return
      */
-    public static boolean isApkDebugable(Context context, String packageName) {
+    public static boolean isApkDebugAble(Context context, String packageName) {
         try {
-            PackageInfo pkginfo = context.getPackageManager().getPackageInfo(
+            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(
                     packageName, PackageManager.GET_ACTIVITIES);
-            if (pkginfo != null) {
-                ApplicationInfo info = pkginfo.applicationInfo;
+            if (packageInfo != null) {
+                ApplicationInfo info = packageInfo.applicationInfo;
                 return (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
             }
         } catch (Exception e) {

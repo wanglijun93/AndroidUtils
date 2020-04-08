@@ -1,6 +1,7 @@
 package wanglijun.vip.androidutils.utils;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
@@ -30,6 +31,7 @@ public class DeviceUtils {
      * @param context
      * @return
      */
+    @SuppressLint({"MissingPermission", "HardwareIds"})
     public static String getUUID(Context context) {
         final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
@@ -40,9 +42,8 @@ public class DeviceUtils {
                 Settings.Secure.ANDROID_ID);
 
         UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
-        String uniqueId = deviceUuid.toString();
 
-        return uniqueId;
+        return deviceUuid.toString();
     }
 
     /**
@@ -68,8 +69,7 @@ public class DeviceUtils {
      * @return true:auto;false: manual;default:true
      */
     public static boolean isScreenBrightnessModeAuto(Context context) {
-        return getScreenBrightnessMode(context) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC ? true
-                : false;
+        return getScreenBrightnessMode(context) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
     }
 
     /**
@@ -225,7 +225,7 @@ public class DeviceUtils {
      * @return true:open, false:close, default:close
      */
     public static boolean isAirplaneModeOpen(Context context) {
-        return getAirplaneMode(context) == 1 ? true : false;
+        return getAirplaneMode(context) == 1;
     }
 
     /**
@@ -278,13 +278,12 @@ public class DeviceUtils {
      * @return true:open, false:close.
      */
     public static boolean isBluetoothOpen() {
-        Integer bluetoothStateCode = getBluetoothState();
+        @SuppressLint("MissingPermission") Integer bluetoothStateCode = getBluetoothState();
         if (bluetoothStateCode == null) {
             return false;
         }
         return bluetoothStateCode == BluetoothAdapter.STATE_ON
-                || bluetoothStateCode == BluetoothAdapter.STATE_TURNING_ON ? true
-                : false;
+                || bluetoothStateCode == BluetoothAdapter.STATE_TURNING_ON;
     }
 
     /**

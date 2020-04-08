@@ -31,7 +31,7 @@ public class FileUtils {
     public static StringBuilder readFile(String filePath, String charsetName) {
         File file = new File(filePath);
         StringBuilder fileContent = new StringBuilder("");
-        if (file == null || !file.isFile()) {
+        if (!file.isFile()) {
             return null;
         }
 
@@ -41,7 +41,7 @@ public class FileUtils {
             reader = new BufferedReader(is);
             String line = null;
             while ((line = reader.readLine()) != null) {
-                if (!fileContent.toString().equals("")) {
+                if (!"".equals(fileContent.toString())) {
                     fileContent.append("\r\n");
                 }
                 fileContent.append(line);
@@ -137,7 +137,7 @@ public class FileUtils {
         try {
             makeDirs(file.getAbsolutePath());
             o = new FileOutputStream(file, append);
-            byte data[] = new byte[1024];
+            byte[] data = new byte[1024];
             int length = -1;
             while ((length = is.read(data)) != -1) {
                 o.write(data, 0, length);
@@ -296,7 +296,7 @@ public class FileUtils {
             return false;
         }
         File folder = new File(folderName);
-        return (folder.exists() && folder.isDirectory()) ? true : folder.mkdirs();
+        return (folder.exists() && folder.isDirectory()) || folder.mkdirs();
     }
 
     /**
@@ -376,14 +376,13 @@ public class FileUtils {
         if (!file.isDirectory()) {
             return false;
         }
-        if (file.isDirectory()) {
-            File[] childFile = file.listFiles();
-            if (childFile == null || childFile.length == 0) {
-                return file.delete();
-            }
-            for (File f : childFile) {
-                deleteFile(f);
-            }
+        file.isDirectory();
+        File[] childFile = file.listFiles();
+        if (childFile == null || childFile.length == 0) {
+            return file.delete();
+        }
+        for (File f : childFile) {
+            deleteFile(f);
         }
         return file.delete();
     }

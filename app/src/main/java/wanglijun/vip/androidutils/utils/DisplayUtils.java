@@ -1,5 +1,6 @@
 package wanglijun.vip.androidutils.utils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -81,7 +82,7 @@ public class DisplayUtils {
     }
 
     /**
-     * Get titlebar height, this method cannot be used in onCreate(),onStart(),onResume(), unless it is called in the
+     * Get titleBar height, this method cannot be used in onCreate(),onStart(),onResume(), unless it is called in the
      * post(Runnable).
      *
      * @param activity
@@ -108,11 +109,12 @@ public class DisplayUtils {
     }
 
     /**
-     * Get statusbar height
+     * Get statusBar height
      *
      * @param activity
      * @return
      */
+    @SuppressLint("PrivateApi")
     public static int getStatusBarHeight2(Activity activity) {
         int statusBarHeight = getStatusBarHeight(activity);
         if (0 == statusBarHeight) {
@@ -122,19 +124,7 @@ public class DisplayUtils {
                 Object localObject = localClass.newInstance();
                 int id = Integer.parseInt(localClass.getField("status_bar_height").get(localObject).toString());
                 statusBarHeight = activity.getResources().getDimensionPixelSize(id);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-            } catch (SecurityException e) {
-                e.printStackTrace();
-            } catch (NoSuchFieldException e) {
+            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | IllegalArgumentException | SecurityException | NoSuchFieldException e) {
                 e.printStackTrace();
             }
         }

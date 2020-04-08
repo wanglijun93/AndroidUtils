@@ -79,6 +79,7 @@ public class FileSize {
 
     }
 
+    @Override
     public String toString() throws RuntimeException {
         try {
             try {
@@ -145,7 +146,7 @@ public class FileSize {
 
     public static double string2double(String doubleStr) {
         try {
-            return Double.valueOf(doubleStr);
+            return Double.parseDouble(doubleStr);
         } catch (Exception e) {
         }
         return 0;

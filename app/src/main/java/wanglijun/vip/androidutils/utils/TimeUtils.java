@@ -402,8 +402,9 @@ public class TimeUtils {
         cal.setTime(new Date());
 
         int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
-        if (w < 0)
+        if (w < 0) {
             w = 0;
+        }
 
         return weekDays[w];
     }
@@ -419,8 +420,9 @@ public class TimeUtils {
         cal.setTime(new Date());
 
         int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
-        if (w < 0)
+        if (w < 0) {
             w = 0;
+        }
 
         return weekDays[w];
     }
@@ -436,10 +438,12 @@ public class TimeUtils {
         cal.setTime(new Date());
 
         int w = cal.get(Calendar.DAY_OF_WEEK);
-        if (w == 0)
+        if (w == 0) {
             w = 1;
-        if (w > 6)
+        }
+        if (w > 6) {
             w = 0;
+        }
         return weekDays[w];
     }
 
@@ -511,14 +515,17 @@ public class TimeUtils {
      */
     public static boolean compareDates(int oldYear, int oldMonth, int oldDay,
                                        int newYear, int newMonth, int newDay) {
-        if (newYear != oldYear)
+        if (newYear != oldYear) {
             return !(newYear < oldYear);
+        }
 
-        if (newMonth != oldMonth)
+        if (newMonth != oldMonth) {
             return !(newMonth < oldMonth);
+        }
 
-        if (newDay != oldDay)
+        if (newDay != oldDay) {
             return !(newDay < oldDay);
+        }
 
         return false;
     }

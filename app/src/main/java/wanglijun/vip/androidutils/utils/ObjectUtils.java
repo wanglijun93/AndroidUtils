@@ -1,5 +1,7 @@
 package wanglijun.vip.androidutils.utils;
 
+import java.util.Objects;
+
 /**
  * @author wlj
  * @date 2017/3/29
@@ -18,6 +20,6 @@ public class ObjectUtils {
      * @return
      */
     public static boolean equals(Object a, Object b) {
-        return a == b || (a == null ? b == null : a.equals(b));
+        return a == b || (Objects.equals(a, b));
     }
 }

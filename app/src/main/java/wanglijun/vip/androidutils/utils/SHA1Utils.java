@@ -22,7 +22,7 @@ public class SHA1Utils {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-1");
             digest.update(s.getBytes());
-            byte messageDigest[] = digest.digest();
+            byte[] messageDigest = digest.digest();
             return toHexString(messageDigest);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();

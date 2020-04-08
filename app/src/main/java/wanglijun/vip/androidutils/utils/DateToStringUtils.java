@@ -1,5 +1,7 @@
 package wanglijun.vip.androidutils.utils;
 
+import android.annotation.SuppressLint;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,26 +24,26 @@ public class DateToStringUtils {
      * @throws ParseException 转换异常
      */
     public static String StringToDate(String dateStr,String dateFormatStr,String formatStr){
-        DateFormat sdf=new SimpleDateFormat(dateFormatStr);
+        @SuppressLint("SimpleDateFormat") DateFormat sdf=new SimpleDateFormat(dateFormatStr);
         Date date=null;
         try {
             date = sdf.parse(dateStr);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        SimpleDateFormat s=new SimpleDateFormat(formatStr);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat s=new SimpleDateFormat(formatStr);
 
         return s.format(date);
     }
     public static String StringToDate2(long dateStr,String dateFormatStr,String formatStr){
-        DateFormat sdf=new SimpleDateFormat(dateFormatStr);
+        @SuppressLint("SimpleDateFormat") DateFormat sdf=new SimpleDateFormat(dateFormatStr);
         Date date=null;
         try {
             date = sdf.parse(String.valueOf(dateStr));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        SimpleDateFormat s=new SimpleDateFormat(formatStr);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat s=new SimpleDateFormat(formatStr);
 
         return s.format(date);
     }

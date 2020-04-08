@@ -25,7 +25,7 @@ public class MD5Utils {
         try {
             MessageDigest digest = MessageDigest.getInstance("MD5");
             digest.update(s.getBytes());
-            byte messageDigest[] = digest.digest();
+            byte[] messageDigest = digest.digest();
             return toHexString(messageDigest);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
@@ -56,14 +56,14 @@ public class MD5Utils {
      * @return
      */
     public final static String encodeMD52(String s) {
-        char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+        char[] hexDigits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
         try {
             byte[] btInput = s.getBytes();
             MessageDigest digest = MessageDigest.getInstance("MD5");
             digest.update(btInput);
             byte[] md = digest.digest();
             int j = md.length;
-            char str[] = new char[j * 2];
+            char[] str = new char[j * 2];
             int k = 0;
             for (int i = 0; i < j; i++) {
                 byte byte0 = md[i];
@@ -88,7 +88,7 @@ public class MD5Utils {
             return null;
         }
         MessageDigest digest = null;
-        byte buffer[] = new byte[1024];
+        byte[] buffer = new byte[1024];
         int len;
         try {
             digest = MessageDigest.getInstance("MD5");

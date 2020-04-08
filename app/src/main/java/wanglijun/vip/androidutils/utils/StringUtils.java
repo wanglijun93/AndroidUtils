@@ -24,11 +24,11 @@ public class StringUtils {
      */
     public static boolean isEmpty(String str) {
         int strLen;
-        if (str == null || (strLen = str.length()) == 0 || str.equalsIgnoreCase("null")) {
+        if (str == null || (strLen = str.length()) == 0 || "null".equalsIgnoreCase(str)) {
             return true;
         }
         for (int i = 0; i < strLen; i++) {
-            if ((Character.isWhitespace(str.charAt(i)) == false)) {
+            if ((!Character.isWhitespace(str.charAt(i)))) {
                 return false;
             }
         }

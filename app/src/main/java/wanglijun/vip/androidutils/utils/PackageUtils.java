@@ -61,7 +61,7 @@ public class PackageUtils {
     public static boolean install(Context context, String filePath) {
         Intent i = new Intent(Intent.ACTION_VIEW);
         File file = new File(filePath);
-        if (file == null || !file.exists() || !file.isFile() || file.length() <= 0) {
+        if (!file.exists() || !file.isFile() || file.length() <= 0) {
             return false;
         }
 
@@ -134,7 +134,7 @@ public class PackageUtils {
         }
         try {
             ApplicationInfo app = packageManager.getApplicationInfo(packageName, 0);
-            return (app != null && (app.flags & ApplicationInfo.FLAG_SYSTEM) > 0);
+            return (app.flags & ApplicationInfo.FLAG_SYSTEM) > 0;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -148,7 +148,7 @@ public class PackageUtils {
      * @param context
      * @return
      */
-    public static List<PackageInfo> getInsatalledPackageInfos(Context context) {
+    public static List<PackageInfo> getInstalledPackageInfo(Context context) {
         return context.getPackageManager().getInstalledPackages(0);
     }
 
@@ -160,9 +160,9 @@ public class PackageUtils {
      * @param packageName
      * @return
      */
-    public static boolean isInsatalled(Context context, String packageName) {
+    public static boolean isInstalled(Context context, String packageName) {
         if (!StringUtils.isEmpty(packageName)) {
-            List<PackageInfo> list = getInsatalledPackageInfos(context);
+            List<PackageInfo> list = getInstalledPackageInfo(context);
             if (!CollectionUtils.isEmpty(list)) {
                 for (PackageInfo pi : list) {
                     if (packageName.equalsIgnoreCase(pi.packageName)) {
@@ -184,9 +184,9 @@ public class PackageUtils {
     public static List<PackageInfo> getAllApps(Context context) {
         List<PackageInfo> apps = new ArrayList<PackageInfo>();
         PackageManager packageManager = context.getPackageManager();
-        List<PackageInfo> packageInfos = packageManager.getInstalledPackages(0);
-        for (int i = 0; i < packageInfos.size(); i++) {
-            PackageInfo pak = packageInfos.get(i);
+        List<PackageInfo> packageInfo = packageManager.getInstalledPackages(0);
+        for (int i = 0; i < packageInfo.size(); i++) {
+            PackageInfo pak = packageInfo.get(i);
             if ((pak.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) <= 0) {
                 apps.add(pak);
             }
@@ -216,10 +216,10 @@ public class PackageUtils {
         resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER);
         resolveIntent.setPackage(packageinfo.packageName);
 
-        List<ResolveInfo> resolveinfoList = context.getPackageManager()
+        List<ResolveInfo> resolveInfoList = context.getPackageManager()
                 .queryIntentActivities(resolveIntent, 0);
 
-        ResolveInfo resolveinfo = resolveinfoList.iterator().next();
+        ResolveInfo resolveinfo = resolveInfoList.iterator().next();
         if (resolveinfo != null) {
             String pkgName = resolveinfo.activityInfo.packageName;
             String className = resolveinfo.activityInfo.name;
