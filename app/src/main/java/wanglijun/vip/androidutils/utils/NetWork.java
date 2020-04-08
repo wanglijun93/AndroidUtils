@@ -14,8 +14,8 @@ public class NetWork {
     public static void internal() {
         int networkType = NetWorkUtils.getNetworkType(Application.context);
         String networkTypeName = NetWorkUtils.getNetworkTypeName(Application.context);
-        LogUtil.d("-----网络名字-----", networkTypeName);
-        LogUtil.d("----网络类型-----", networkType + "");
+        LogUtils.d("-----网络名字-----", networkTypeName);
+        LogUtils.d("----网络类型-----", networkType + "");
         if (networkTypeName.equals(NetWorkUtils.NETWORK_TYPE_WIFI)) {
             ToastUtil.showToast("你目前处于wifi网络");
         } else if (networkTypeName.equals(NetWorkUtils.NETWORK_TYPE_DISCONNECT)) {

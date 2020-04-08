@@ -9,8 +9,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ProviderInfo;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
-import android.support.annotation.Nullable;
-
 import java.util.List;
 
 
@@ -121,7 +119,6 @@ public class PackageManagerUtil {
     }
 
     public static
-    @Nullable
     String[] getPackagesForUid(Context context, int uid) {
         synchronized (PackageManagerUtil.class) {
             return context.getPackageManager().getPackagesForUid(uid);

@@ -8,12 +8,13 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.annotation.RequiresPermission;
 import android.telephony.TelephonyManager;
 import android.view.Window;
 import android.view.WindowManager;
 
 import java.util.UUID;
+
+import androidx.annotation.RequiresPermission;
 
 /**
  * @author wlj
