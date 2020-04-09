@@ -1,19 +1,3 @@
-/*
- * Copyright 2016 北京博瑞彤芸文化传播股份有限公司
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package wanglijun.vip.androidutils.utils;
 
 import java.text.ParseException;
@@ -24,11 +8,9 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /**
+ * 时间相关
+ *
  * @author wlj
- * @date 2017/3/28
- * @email wanglijundev@gmail.com
- * @packagename wanglijun.vip.androidutils
- * @description 时间工具类
  */
 public class TimeUtils {
 
@@ -192,16 +174,152 @@ public class TimeUtils {
      * EEEE 'DATE('yyyy-MM-dd')' 'TIME('HH:mm:ss')' zzzz    星期五 DATE(2016-08-12) TIME(15:44:40) 中国标准时间
      * </pre>
      */
-    public static final SimpleDateFormat DEFAULT_SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-    public static final SimpleDateFormat CN_MM_DD_SDF = new SimpleDateFormat("MM月dd日", Locale.getDefault());
-    public static final SimpleDateFormat CN_M_D_SDF = new SimpleDateFormat("M月d日", Locale.getDefault());
-    public static final SimpleDateFormat EN_YYYY_MM_DD_SDF = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-    public static final SimpleDateFormat CN_YYYY_MM_DD_SDF = new SimpleDateFormat("yyyy年MM月dd日", Locale.getDefault());
-    public static final SimpleDateFormat CN_YYYY_M_D_SDF = new SimpleDateFormat("yyyy年M月d日", Locale.getDefault());
-    public static final SimpleDateFormat EN_M_D_SDF = new SimpleDateFormat("M/d", Locale.getDefault());
-    public static final SimpleDateFormat EN_MM_DD_SDF = new SimpleDateFormat("MM-dd", Locale.getDefault());
-    public static final SimpleDateFormat EN_HH_mm = new SimpleDateFormat("HH:mm", Locale.getDefault());
+    public static ThreadLocal<SimpleDateFormat> DEFAULT_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> CN_MM_DD_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("MM月dd日", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> CN_M_D_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("MM月dd日", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> CN_MM_DD_HH_MM_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("MM月dd日 HH:mm", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> EN_YYYY_MM_DD_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> EN_YYYY_MM_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> EN_YYYY_MM_DD_HH_MM_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> EN_YYYY_M_D_HH_MM_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-M-d HH:mm", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> CN_YYYY_MM_DD_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy年MM月dd日", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> CN_YYYY_MM_DD_HH_MM_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy年MM月dd日   HH:mm", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> CN_YYYY_M_D_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy年M月d日", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> CN_YYYY_MM_DD_HH_MM_SS_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> CN_YYYY_MM_DD_HH_MM_2_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy年MM月dd日HH时mm分", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> CN_YYYY_MM_DD_HH_MM_3_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy年M月d日H时m分", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> EN_M_D_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("M/d", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> EN_MM_DD_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("MM-dd", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> EN_YYYY_MM_DD_HH_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd HH", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> EN_YYYY_MM_DD_HH_SDFS = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> EN_BIAS_YYYY_MM_DD_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> EN_BIAS_YYYY_MM_DD_HH_MM_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> EN_H_MM_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("H:mm", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> EN_HH_mm = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("HH:mm", Locale.getDefault());
+        }
+    };
+    public static ThreadLocal<SimpleDateFormat> EN_YYYY_M_D_SDF = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-M-d", Locale.getDefault());
+        }
+    };
 
+    public static ThreadLocal<SimpleDateFormat> EN_MM_DD_HH_MM_SDF =
+            new ThreadLocal<SimpleDateFormat>() {
+                @Override
+                protected SimpleDateFormat initialValue() {
+                    return new SimpleDateFormat("MM-dd HH:mm", Locale.getDefault());
+                }
+            };
 
     /**
      * 将时间戳转为时间字符串
@@ -211,7 +329,7 @@ public class TimeUtils {
      * @return 时间字符串
      */
     public static String milliseconds2String(long milliseconds) {
-        return milliseconds2String(milliseconds, DEFAULT_SDF);
+        return milliseconds2String(milliseconds, DEFAULT_SDF.get());
     }
 
     /**
@@ -234,7 +352,7 @@ public class TimeUtils {
      * @return 毫秒时间戳
      */
     public static long string2Milliseconds(String time) {
-        return string2Milliseconds(time, DEFAULT_SDF);
+        return string2Milliseconds(time, DEFAULT_SDF.get());
     }
 
     /**
@@ -262,7 +380,7 @@ public class TimeUtils {
      * @return Date类型
      */
     public static Date string2Date(String time) {
-        return string2Date(time, DEFAULT_SDF);
+        return string2Date(time, DEFAULT_SDF.get());
     }
 
 
@@ -286,7 +404,7 @@ public class TimeUtils {
      * @return 时间字符串
      */
     public static String date2String(Date time) {
-        return date2String(time, DEFAULT_SDF);
+        return date2String(time, DEFAULT_SDF.get());
     }
 
     /**
@@ -321,21 +439,104 @@ public class TimeUtils {
         return new Date(milliseconds);
     }
 
+    /**
+     * 毫秒时间戳单位转换（单位：unit）
+     *
+     * @param milliseconds 毫秒时间戳
+     * @param unit         <ul>
+     *                     <li>{@link ConstUtils.TimeUnit#MSEC}: 毫秒</li>
+     *                     <li>{@link ConstUtils.TimeUnit#SEC }: 秒</li>
+     *                     <li>{@link ConstUtils.TimeUnit#MIN }: 分</li>
+     *                     <li>{@link ConstUtils.TimeUnit#HOUR}: 小时</li>
+     *                     <li>{@link ConstUtils.TimeUnit#DAY }: 天</li>
+     *                     </ul>
+     * @return unit时间戳
+     */
+    private static long milliseconds2Unit(long milliseconds, ConstUtils.TimeUnit unit) {
+        switch (unit) {
+            case MSEC:
+                return milliseconds / ConstUtils.MSEC;
+            case SEC:
+                return milliseconds / ConstUtils.SEC;
+            case MIN:
+                return milliseconds / ConstUtils.MIN;
+            case HOUR:
+                return milliseconds / ConstUtils.HOUR;
+            case DAY:
+                return milliseconds / ConstUtils.DAY;
 
+        }
+        return -1;
+    }
 
+    /**
+     * 获取两个时间差（单位：unit）
+     * <p>time1和time2格式都为yyyy-MM-dd HH:mm:ss</p>
+     *
+     * @param time0 时间字符串1
+     * @param time1 时间字符串2
+     * @param unit  <ul>
+     *              <li>{@link ConstUtils.TimeUnit#MSEC}: 毫秒</li>
+     *              <li>{@link ConstUtils.TimeUnit#SEC }: 秒</li>
+     *              <li>{@link ConstUtils.TimeUnit#MIN }: 分</li>
+     *              <li>{@link ConstUtils.TimeUnit#HOUR}: 小时</li>
+     *              <li>{@link ConstUtils.TimeUnit#DAY }: 天</li>
+     *              </ul>
+     * @return unit时间戳
+     */
+    public static long getIntervalTime(String time0, String time1, ConstUtils.TimeUnit unit) {
+        return getIntervalTime(time0, time1, unit, DEFAULT_SDF.get());
+    }
 
+    /**
+     * 获取两个时间差（单位：unit）
+     * <p>time1和time2格式都为format</p>
+     *
+     * @param time0  时间字符串1
+     * @param time1  时间字符串2
+     * @param unit   <ul>
+     *               <li>{@link ConstUtils.TimeUnit#MSEC}: 毫秒</li>
+     *               <li>{@link ConstUtils.TimeUnit#SEC }: 秒</li>
+     *               <li>{@link ConstUtils.TimeUnit#MIN }: 分</li>
+     *               <li>{@link ConstUtils.TimeUnit#HOUR}: 小时</li>
+     *               <li>{@link ConstUtils.TimeUnit#DAY }: 天</li>
+     *               </ul>
+     * @param format 时间格式
+     * @return unit时间戳
+     */
+    public static long getIntervalTime(String time0, String time1, ConstUtils.TimeUnit unit, SimpleDateFormat format) {
+        return Math.abs(milliseconds2Unit(string2Milliseconds(time0, format)
+                - string2Milliseconds(time1, format), unit));
+    }
 
-
-
+    /**
+     * 获取两个时间差（单位：unit）
+     * <p>time1和time2都为Date类型</p>
+     *
+     * @param time0 Date类型时间1
+     * @param time1 Date类型时间2
+     * @param unit  <ul>
+     *              <li>{@link ConstUtils.TimeUnit#MSEC}: 毫秒</li>
+     *              <li>{@link ConstUtils.TimeUnit#SEC }: 秒</li>
+     *              <li>{@link ConstUtils.TimeUnit#MIN }: 分</li>
+     *              <li>{@link ConstUtils.TimeUnit#HOUR}: 小时</li>
+     *              <li>{@link ConstUtils.TimeUnit#DAY }: 天</li>
+     *              </ul>
+     * @return unit时间戳
+     */
+    public static long getIntervalTime(Date time0, Date time1, ConstUtils.TimeUnit unit) {
+        return Math.abs(milliseconds2Unit(date2Milliseconds(time1)
+                - date2Milliseconds(time0), unit));
+    }
 
     /**
      * 获取两个毫秒值之间的时间差(天数)
      *
      * @param time1
-     * @param time2     一般time2写较大的值
+     * @param time2 一般time2写较大的值
      * @return
      */
-    public static int getIntervalTime(long time1, long time2){
+    public static int getIntervalTime(long time1, long time2) {
         return (int) ((time2 - time1) / (1000 * 3600 * 24));
     }
 
@@ -379,7 +580,60 @@ public class TimeUtils {
         return new Date();
     }
 
+    /**
+     * 获取与当前时间的差（单位：unit）
+     * <p>time格式为yyyy-MM-dd HH:mm:ss</p>
+     *
+     * @param time 时间字符串
+     * @param unit <ul>
+     *             <li>{@link ConstUtils.TimeUnit#MSEC}:毫秒</li>
+     *             <li>{@link ConstUtils.TimeUnit#SEC }:秒</li>
+     *             <li>{@link ConstUtils.TimeUnit#MIN }:分</li>
+     *             <li>{@link ConstUtils.TimeUnit#HOUR}:小时</li>
+     *             <li>{@link ConstUtils.TimeUnit#DAY }:天</li>
+     *             </ul>
+     * @return unit时间戳
+     */
+    public static long getIntervalByNow(String time, ConstUtils.TimeUnit unit) {
+        return getIntervalByNow(time, unit, DEFAULT_SDF.get());
+    }
 
+    /**
+     * 获取与当前时间的差（单位：unit）
+     * <p>time格式为format</p>
+     *
+     * @param time   时间字符串
+     * @param unit   <ul>
+     *               <li>{@link ConstUtils.TimeUnit#MSEC}: 毫秒</li>
+     *               <li>{@link ConstUtils.TimeUnit#SEC }: 秒</li>
+     *               <li>{@link ConstUtils.TimeUnit#MIN }: 分</li>
+     *               <li>{@link ConstUtils.TimeUnit#HOUR}: 小时</li>
+     *               <li>{@link ConstUtils.TimeUnit#DAY }: 天</li>
+     *               </ul>
+     * @param format 时间格式
+     * @return unit时间戳
+     */
+    public static long getIntervalByNow(String time, ConstUtils.TimeUnit unit, SimpleDateFormat format) {
+        return getIntervalTime(getCurTimeString(), time, unit, format);
+    }
+
+    /**
+     * 获取与当前时间的差（单位：unit）
+     * <p>time为Date类型</p>
+     *
+     * @param time Date类型时间
+     * @param unit <ul>
+     *             <li>{@link ConstUtils.TimeUnit#MSEC}: 毫秒</li>
+     *             <li>{@link ConstUtils.TimeUnit#SEC }: 秒</li>
+     *             <li>{@link ConstUtils.TimeUnit#MIN }: 分</li>
+     *             <li>{@link ConstUtils.TimeUnit#HOUR}: 小时</li>
+     *             <li>{@link ConstUtils.TimeUnit#DAY }: 天</li>
+     *             </ul>
+     * @return unit时间戳
+     */
+    public static long getIntervalByNow(Date time, ConstUtils.TimeUnit unit) {
+        return getIntervalTime(getCurTimeDate(), time, unit);
+    }
 
     /**
      * 判断闰年
@@ -447,28 +701,63 @@ public class TimeUtils {
         return weekDays[w];
     }
 
+    /**
+     * 获取当前是年内的第几周
+     *
+     * @return
+     */
+    public static int getWeekOfYear() {
+        int weekofyear = 0;
+        try {
+            Calendar c = Calendar.getInstance();
+            c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+            c.setFirstDayOfWeek(Calendar.MONDAY);/*设置周一为一周的第一天*/
+            weekofyear = c.get(Calendar.WEEK_OF_YEAR);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return weekofyear;
+    }
+
+    /**
+     * 获取日历展示信息
+     *
+     * @return 返回日期+周几
+     */
+    public static String getCalendar() {
+        return TimeUtils.getCurTimeString(TimeUtils.CN_MM_DD_SDF.get()) + " " + TimeUtils.getWeek();
+    }
 
     /**
      * 获取桌面时钟的时间
+     * 20180508 因该方法没被调用，且该方法需要 用到application的上下文，所以暂时注释掉
      */
-    public static String getDeskClockTime() {
-        final Calendar c = Calendar.getInstance();
-        c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
-        String mHuor = String.valueOf(c.get(Calendar.HOUR_OF_DAY));
-        String imnute = String.valueOf(c.get(Calendar.MINUTE));
-        if (imnute.length() < 2) {
-            imnute = "0" + imnute;
-        }
-        if (mHuor.length() < 2) {
-            mHuor = "0" + mHuor;
-        }
-        return mHuor + ":" + imnute;
-    }
+//    public static String getDeskClockTime() {
+//        ContentResolver cv = ActApplication.getAppContext().getContentResolver();
+//        String strTimeFormat = android.provider.Settings.System.getString(cv,
+//                android.provider.Settings.System.TIME_12_24);
+//        int hour = "24".equals(strTimeFormat) ? Calendar.HOUR_OF_DAY : Calendar.HOUR;
+//        Calendar c = Calendar.getInstance();
+////        c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+//        c.setTimeZone(TimeZone.getDefault());
+//        String mHuor = String.valueOf(c.get(hour));
+//        if (hour == Calendar.HOUR && "0".equals(mHuor)) {
+//            mHuor = "12";
+//        }
+//        String imnute = String.valueOf(c.get(Calendar.MINUTE));
+//        if (imnute.length() < 2) {
+//            imnute = "0" + imnute;
+//        }
+//        if (mHuor.length() < 2) {
+//            mHuor = "0" + mHuor;
+//        }
+//        return mHuor + ":" + imnute;
+//    }
 
     /**
      * 获取当前月份是几月
      */
-    public static String getCurMonth() {
+    public static String getCurMonthStr() {
 
         Calendar c = Calendar.getInstance();
 
@@ -488,6 +777,39 @@ public class TimeUtils {
          * 月份从0开始计算
          */
         return year + "-" + monthString;
+    }
+
+    /**
+     * 获取当前月份
+     *
+     * @return
+     */
+    public static int getCurMonth() {
+        int month = 0;
+        try {
+            Calendar c = Calendar.getInstance();
+            c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+            month = c.get(Calendar.MONTH) + 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return month;
+    }
+
+    /**
+     * 获取上个月月份
+     *
+     * @return
+     */
+    public static int getLastMonth() {
+
+        int last = 1;
+        int cur = getCurMonth();
+        last = cur - 1;
+        if (last == 0) {
+            last = 12;
+        }
+        return last;
     }
 
     /**
@@ -550,7 +872,6 @@ public class TimeUtils {
     }
 
 
-
     /**
      * 获取当前月的天数
      *
@@ -575,12 +896,475 @@ public class TimeUtils {
     }
 
     /**
+     * 获取当前日期
+     *
+     * @return
+     */
+    public static int getCurDayOFMonthInt() {
+        Calendar c = Calendar.getInstance();
+        return c.get(Calendar.DAY_OF_MONTH);
+    }
+
+    /**
      * 获取当前年份
+     *
      * @return
      */
     public static String getCurYear() {
         Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
-        return year+"";
+        return year + "";
     }
+
+    /**
+     * 获取当前是几号
+     *
+     * @return
+     */
+    public static int getDay() {
+        Calendar c = Calendar.getInstance();
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        return day;
+    }
+
+    /**
+     * 获取年份
+     *
+     * @return
+     */
+    public static String getYear(long time) {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(time);
+        int year = c.get(Calendar.YEAR);
+        return String.valueOf(year);
+    }
+
+    /**
+     * 获取距离指定日期指定天数的日期
+     *
+     * @param current
+     * @param diff
+     * @return
+     */
+    public static String getDayByDiff(String current, int diff) {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String result = null;
+        try {
+            calendar.setTime(format.parse(current));
+            calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) + diff);
+            result = format.format(calendar.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 获取三天后的凌晨
+     *
+     * @return
+     */
+    public static long getThreeDaysLater() {
+        return getTodayZero() + 3 * 24 * 60 * 60 * 1000L;
+    }
+
+    /**
+     * 今天零点
+     */
+    public static long getTodayZero() {
+        String timeStr = getCurTimeString(EN_YYYY_MM_DD_SDF.get());
+        return string2Date(timeStr, EN_YYYY_MM_DD_SDF.get()).getTime();
+    }
+
+    /**
+     * 明天零点
+     *
+     * @return
+     */
+    public static long getTomorrowZero() {
+        return getTodayZero() + 24 * 60 * 60 * 1000L;
+    }
+
+
+    /**
+     * 获取最近一个周末的日期
+     *
+     * @param style 返回结果样式 0 day/month   1 month.day
+     * @return
+     */
+    private static String getLatestSunday(int style) {
+        String result = "";
+        try {
+            Calendar c = Calendar.getInstance();
+            c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+            int mDayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+            int diff = 0 - (mDayOfWeek - 1);
+            if (diff == 0) {
+                diff = -7;
+            }
+            c.setTime(new Date(System.currentTimeMillis()));
+            c.add(Calendar.DAY_OF_MONTH, diff);
+            String mDay = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+            int mMonth = c.get(Calendar.MONTH) + 1;// 获取mDay所在月份
+            if (style == 0) {
+                result = mDay + "/" + mMonth;
+            } else if (style == 1) {
+                result = mMonth + "." + mDay;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 获取最近一个周末的日期
+     *
+     * @param diffWeek -1：上一周的周一  -2：上两周的周一 。。。
+     * @return
+     */
+    public static String getLatestSundayDiff(int diffWeek) {
+        String result = "";
+        try {
+            Calendar c = Calendar.getInstance();
+            c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+            int mDayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+            int diff = 0 - (mDayOfWeek - 1);
+            if (diff == 0) {
+                diff = -7;
+            }
+            diff = diff + (diffWeek * 7 + 1);
+            c.setTime(new Date(System.currentTimeMillis()));
+            c.add(Calendar.DAY_OF_MONTH, diff);
+            String mDay = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+            int mMonth = c.get(Calendar.MONTH) + 1;// 获取mDay所在月份
+            result = mMonth + "." + mDay;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 获取最近一个周末的日期
+     *
+     * @return [20170605, 20170610]
+     */
+    public static String[] getLatestWeekSpan(int diffWeek) {
+        String[] result = new String[2];
+        try {
+            Calendar c = Calendar.getInstance();
+            c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+            int mDayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+            int diff = 0 - (mDayOfWeek - 1);
+            if (diff == 0) {
+                diff = -7;
+            }
+
+            for (int i = 0; i < 2; i++) {
+                if (i == 0) {
+                    diff = diff + (diffWeek * 7 + 1);
+                } else {
+                    diff = diff + 6;
+                }
+                c.setTime(new Date(System.currentTimeMillis()));
+                c.add(Calendar.DAY_OF_MONTH, diff);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                String mDay = day + "";
+                if (day < 10) {
+                    mDay = "0" + day;
+                }
+                // 获取mDay所在月份
+                int month = c.get(Calendar.MONTH) + 1;
+                String mMonth = month + "";
+                if (month < 10) {
+                    mMonth = "0" + month;
+                }
+                int mYear = c.get(Calendar.YEAR);
+                result[i] = mYear + "" + mMonth + "" + mDay;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 获取最近一周的日期---点分式-周报页面
+     *
+     * @return
+     */
+    public static String getLatestSundayDot() {
+
+        String result = "";
+        try {
+            Calendar c = Calendar.getInstance();
+            c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+            int mDayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+//           0 1 2 3 4 5 6
+            int diff = 0 - (mDayOfWeek - 1);
+            if (diff == 0) {
+                diff = -7;
+            }
+            c.setTime(new Date(System.currentTimeMillis()));
+            c.add(Calendar.DAY_OF_MONTH, diff);
+            String mDay = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+            // 获取mDay所在月份
+            String mMonth = c.get(Calendar.MONTH) + 1 + "";
+            if (mMonth.length() == 1) {
+                mMonth = 0 + "" + mMonth;
+            }
+            if (mDay.length() == 1) {
+                mDay = 0 + mDay;
+            }
+            result = mMonth + "." + mDay;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 获取最近一月的日期---空格分式-月报页面
+     *
+     * @return
+     */
+    public static String getLastMonthDot() {
+        String result = "";
+        try {
+            Calendar c = Calendar.getInstance();
+            c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+            c.setTime(new Date(System.currentTimeMillis()));
+            c.add(Calendar.MONTH, -1);
+            // 获取mDay所在月份
+            String mMonth = c.get(Calendar.MONTH) + 1 + "";
+            String mYear = c.get(Calendar.YEAR) + "";
+            if (mMonth.length() == 1) {
+                mMonth = 0 + "" + mMonth;
+            }
+            result = mYear + "年" + mMonth + "月";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 获取上一月的日期---年、月[0-11]
+     *
+     * @param interval -1:之前1个月 -2之前两个月 -3：之前三个月。。。以此类推
+     * @return
+     */
+    public static String[] getLastMonthYear(int interval) {
+        String[] result = new String[]{"2017", "1"};
+        try {
+            Calendar c = Calendar.getInstance();
+            c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+            c.setTime(new Date(System.currentTimeMillis()));
+            c.add(Calendar.MONTH, interval);
+            String mMonth = c.get(Calendar.MONTH) + "";
+            String mYear = c.get(Calendar.YEAR) + "";
+            result[0] = mYear;
+            result[1] = mMonth;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static String[] getLastMonthRecord(int interval) {
+        String[] result = new String[]{"2017", "1"};
+        try {
+            Calendar c = Calendar.getInstance();
+            c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+            c.setTime(new Date(System.currentTimeMillis()));
+            c.add(Calendar.MONTH, interval);
+            String mMonth = (c.get(Calendar.MONTH) + 1) + "";
+            String mYear = c.get(Calendar.YEAR) + "";
+            result[0] = mYear;
+            result[1] = mMonth;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 根据日期获取周几
+     *
+     * @param date：2017-06-04
+     */
+    public static String getDayOfWeekByDate(String date) {
+        String[] dayOfWeek;
+        Calendar calendar;
+        String result;
+        try {
+            dayOfWeek = new String[]{"default", "周日", "周一", "周二", "周三", "周四", "周五", "周六"};
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date date1 = sdf.parse(date);
+            calendar = Calendar.getInstance();
+            calendar.setTime(date1);
+            result = dayOfWeek[calendar.get(Calendar.DAY_OF_WEEK)];
+        } catch (ParseException e) {
+            result = date;
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 根据日期获取周几
+     *
+     * @param :geshi：2017-06-04
+     * @param date              预报中第一天的日期
+     * @param index             第几天
+     */
+    public static String getDayOfWeekByDate(long date, int index) {
+        String[] dayOfWeek;
+        Calendar calendar;
+        String result;
+        try {
+            dayOfWeek = new String[]{"default", "周日", "周一", "周二", "周三", "周四", "周五", "周六"};
+            Date date1 = new Date(date);
+            calendar = Calendar.getInstance();
+            calendar.setTime(date1);
+            calendar.add(calendar.DATE, index);
+            result = dayOfWeek[calendar.get(Calendar.DAY_OF_WEEK)];
+        } catch (Exception e) {
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd");
+            calendar = Calendar.getInstance();
+            calendar.setTime(new Date(date));
+            calendar.add(calendar.DATE, index);
+            result = sdf.format(calendar.getTime());
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 获取上周周几的日期,默认一周从周一开始
+     *
+     * @param dayOfWeek
+     * @param weekOffset
+     * @return
+     */
+    public static Date getDayOfWeek(int dayOfWeek, int weekOffset) {
+        return getDayOfWeek(Calendar.MONDAY, dayOfWeek, weekOffset);
+    }
+
+    /**
+     * 获取上(下)周周几的日期
+     *
+     * @param firstDayOfWeek {@link Calendar}
+     *                       值范围 <code>SUNDAY</code>,
+     *                       <code>MONDAY</code>, <code>TUESDAY</code>, <code>WEDNESDAY</code>,
+     *                       <code>THURSDAY</code>, <code>FRIDAY</code>, and <code>SATURDAY</code>
+     * @param dayOfWeek      {@link Calendar}
+     * @param weekOffset     周偏移，上周为-1，本周为0，下周为1，以此类推
+     * @return
+     */
+    public static Date getDayOfWeek(int firstDayOfWeek, int dayOfWeek, int weekOffset) {
+        if (dayOfWeek > Calendar.SATURDAY || dayOfWeek < Calendar.SUNDAY) {
+            return null;
+        }
+        if (firstDayOfWeek > Calendar.SATURDAY || firstDayOfWeek < Calendar.SUNDAY) {
+            return null;
+        }
+        Calendar date = Calendar.getInstance(Locale.CHINA);
+        date.setFirstDayOfWeek(firstDayOfWeek);
+        //周数减一，即上周
+        date.add(Calendar.WEEK_OF_MONTH, weekOffset);
+        //日子设为周几
+        date.set(Calendar.DAY_OF_WEEK, dayOfWeek);
+        //时分秒全部置0
+        date.set(Calendar.HOUR_OF_DAY, 0);
+        date.set(Calendar.MINUTE, 0);
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
+        return date.getTime();
+    }
+
+    /**
+     * 将毫秒值转化为友好的时间表达格式
+     * 今天 14:52
+     * 明天 14:52
+     * 昨天 14:52
+     * 年一样，日期非今天昨天明天，返回08-12 14:52
+     * 年不一样，返回2018-08-12 14:52
+     */
+    public static String milliseconds2FriendlyString(long milliseconds) {
+        return date2FriendlyString(new Date(milliseconds));
+    }
+
+    /**
+     * 将Date类型转化为友好的时间表达格式
+     * 今天 14:52
+     * 明天 14:52
+     * 昨天 14:52
+     * 年一样，日期非今天昨天明天，返回08-12 14:52
+     * 年不一样，返回2018-08-12 14:52
+     */
+    public static String date2FriendlyString(Date date) {
+        Calendar targetCalendar = Calendar.getInstance();
+        targetCalendar.setTime(date);
+        Calendar currentCalendar = Calendar.getInstance();
+        if (currentCalendar.get(Calendar.YEAR) != targetCalendar.get(Calendar.YEAR)) {
+            return EN_YYYY_MM_DD_HH_MM_SDF.get().format(date);
+        } else {
+            int diffDay = currentCalendar.get(Calendar.DAY_OF_YEAR) - targetCalendar.get(
+                    Calendar.DAY_OF_YEAR);
+            if (diffDay == 1) {
+                return "昨天 " + EN_HH_mm.get().format(date);
+            } else if (diffDay == 0) {
+                return "今天 " + EN_HH_mm.get().format(date);
+            } else if (diffDay == -1) {
+                return "明天 " + EN_HH_mm.get().format(date);
+            } else {
+                return EN_MM_DD_HH_MM_SDF.get().format(date);
+            }
+        }
+    }
+
+    /**
+     * 将毫秒值转化为友好的时间表达格式
+     * 今天 14:52
+     * 明天 14:52
+     * 昨天 14:52
+     * 年一样，日期非今天昨天明天，返回08-12 14:52
+     * 年不一样，返回2018-08-12 14:52
+     */
+    public static String milliseconds2FriendlyStringCN(long milliseconds) {
+        return date2FriendlyStringCN(new Date(milliseconds));
+    }
+
+    /**
+     * 将Date类型转化为友好的时间表达格式
+     * 今天 14:52
+     * 明天 14:52
+     * 昨天 14:52
+     * 年一样，日期非今天昨天明天，返回08-12 14:52
+     * 年不一样，返回2018-08-12 14:52
+     */
+    public static String date2FriendlyStringCN(Date date) {
+        Calendar targetCalendar = Calendar.getInstance();
+        targetCalendar.setTime(date);
+        Calendar currentCalendar = Calendar.getInstance();
+        if (currentCalendar.get(Calendar.YEAR) != targetCalendar.get(Calendar.YEAR)) {
+            return EN_YYYY_MM_DD_HH_MM_SDF.get().format(date);
+        } else {
+            int diffDay = currentCalendar.get(Calendar.DAY_OF_YEAR) -
+                    targetCalendar.get(Calendar.DAY_OF_YEAR);
+            if (diffDay == 1) {
+                return "昨天 " + EN_HH_mm.get().format(date);
+            } else if (diffDay == 0) {
+                return "今天 " + EN_HH_mm.get().format(date);
+            } else if (diffDay == -1) {
+                return "明天 " + EN_HH_mm.get().format(date);
+            } else {
+                return CN_MM_DD_HH_MM_SDF.get().format(date);
+            }
+        }
+    }
+
 }
